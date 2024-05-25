@@ -25,9 +25,9 @@ const rest = new REST({ version: '10' }).setToken(process.env.DISCORDBOTTOKEN); 
         console.log(`${commands.length} 個のアプリケーションコマンドを登録します。`);
 
         const data = await rest.put(    //
-            Routes.applicationGuildCommands(process.env.DISCORDBOTCLIENTID, process.env.GUILD_ID),  // .envからクライアントIDとギルドIDを取得、エンドポイントの作成。
-            { body: commands },     //commandsの変数の中にある情報をエンドポイントに渡す。
-        );
+        Routes.applicationCommands(process.env.DISCORDBOTCLIENTID),  // .envからクライアントIDとギルドIDを取得、エンドポイントの作成。
+        { body: commands },     //commandsの変数の中にある情報をエンドポイントに渡す。
+    );
 
         console.log(`${data.length} 個のアプリケーションコマンドを登録しました。`);
     } catch (error) {
