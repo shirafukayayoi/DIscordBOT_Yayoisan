@@ -14,8 +14,8 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 
 for (const file of commandFiles) {      //.jsのファイルを順番に取り出す。
     const command = require(`./commands/${file}`);      //commandsの中にあるファイルの名前を{file}の中に入れて呼び出す。
+    console.log(file)
     commands.push(command.data.toJSON());       //取り出したファイルの中にある"data"をJSON形式にする。
-    console.log(`ファイルの取り出し成功`)
 }
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORDBOTTOKEN);  // 環境変数からトークンを取得

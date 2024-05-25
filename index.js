@@ -48,7 +48,7 @@ client.on('interactionCreate', async interaction => {       //"interactionCreate
 
 //Botにステータスを追加
 client.once(Events.ClientReady, c => {
-    client.user.setActivity('やよいさんのお世話Botです！');
+    client.user.setActivity('badfeeling...');
 });
 
 client.login(process.env.DISCORDBOTTOKEN); //.envからトークンを取得してログイン
