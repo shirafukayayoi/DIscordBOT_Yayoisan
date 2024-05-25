@@ -8,7 +8,7 @@ client.on('ready', () => {
 });
 
 client.once(Events.ClientReady, c => {  //
-    client.user.setActivity('やよいさんのお世話を実行中～');
+    client.user.setActivity('やよいさんのお世話Botです！');
 });
 
 client.login(process.env.DISCORDBOTTOKEN); //環境変数からトークンを取得してログイン
