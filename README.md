@@ -7,4 +7,12 @@
 
 ## LInks
 
-- [My Twitter](https://x.com/shirafuka_yayoi)
+- [Shirafukayayoi Twitter](https://x.com/shirafuka_yayoi)
+
+## command
+
+| コマンド名 | 機能                   |     |
+| ---------- | ---------------------- | --- |
+| /help      | 何かあったらこれを！   |     |
+| /omikuji   | おみくじを引けます！！ |     |
+|            |                        |     |
