@@ -3,3 +3,4 @@ memo.js
 node_modules/
 package-lock.json
 .env
+run.bat

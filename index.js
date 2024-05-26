@@ -22,7 +22,7 @@ for (const file of commandFiles) {      //各コマンドファイルを処理
 		client.commands.set(command.data.name, command);    //読み込んだファイルの"name"を取得、commandの中身をコマンドを格納するCollectionに収納。
 	} else {
 		console.log(`${filePath} に必要な "data" か "execute" がありません。`);
-	}5
+	}
 }
 
 client.on('interactionCreate', async interaction => {       //"interactionCreate"はユーザーが/コマンドを実行したときに発生
@@ -30,7 +30,8 @@ client.on('interactionCreate', async interaction => {       //"interactionCreate
 
     //interaction.client.commandsで格納されているコマンドを確認、interaction.commandNameは実行されたコマンドの名前、そのコマンドを取得する。
 	const command = interaction.client.commands.get(interaction.commandName);
-    console.log(interaction.commandName)    //実行されたコマンドのログ
+	const currentTime = new Date().toLocaleString(); // new Dateで現在の時間を取得、取得した文字列を標準形式で表示。
+    console.log(interaction.commandName,currentTime)    //実行されたコマンドのログ
 
     //もしコマンドが見つからなかったらreturnで関数に戻し終了。
 	if (!command) {
