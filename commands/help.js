@@ -8,6 +8,6 @@ module.exports = {
 		.setDescription('困ったことがあったらここから！'),
 	async execute(interaction) {
         // 返信
-		await interaction.reply('何か困ったことはありましたか!？');
+		await interaction.reply('何か困ったことはありましたか？\n何か問題がありましたら**白深やよい**のTwitter、またはDiscordにご連絡ください！');
 	},
 };
