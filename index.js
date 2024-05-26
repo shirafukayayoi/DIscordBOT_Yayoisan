@@ -22,7 +22,7 @@ for (const file of commandFiles) {      //各コマンドファイルを処理
 		client.commands.set(command.data.name, command);    //読み込んだファイルの"name"を取得、commandの中身をコマンドを格納するCollectionに収納。
 	} else {
 		console.log(`${filePath} に必要な "data" か "execute" がありません。`);
-	}
+	}5
 }
 
 client.on('interactionCreate', async interaction => {       //"interactionCreate"はユーザーが/コマンドを実行したときに発生

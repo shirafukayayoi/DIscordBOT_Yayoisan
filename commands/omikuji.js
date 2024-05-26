@@ -1,52 +1,25 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js');      //Discordのスラッシュコマンドを作るのに必要
+const fs = require('fs');   //ファイル操作のために必要
+const csv = require('csv-parser');      //csvファイルを読み込むために必要
 
 module.exports = {
     data: new SlashCommandBuilder()
-        // コマンドの名前
-        .setName('omikuji')
-        // コマンドの説明文
-        .setDescription('おみくじ、してみない？'),
+        .setName('omikuji')     //名前
+        .setDescription('おみくじ、してみない？'),      //説明
     async execute(interaction) {
-        const results = [       //複数あるときは[]を使う。
-            '大吉',
-            '中吉',
-            '小吉',
-            '吉',
-            '末吉',
-            '凶',
-            '大凶'
-        ];
+        // CSVファイルからおみくじのデータを読み込む
+        const results = [];
+        fs.createReadStream('./csv/omikuji.csv')      //ここでcsvを読み込み、ストリーム（少しずつ読み込む処理）として処理
+            .pipe(csv())        //csv-parsarのモジュールに繋げる。
+            .on('data', (row) => {      //ストリームの処理が読み込まれると実行させるようにするコード
+                results.push(row);      //ストリームから読み込まれたrow(一行)をデータとしてresultsに渡す。pushは与える、のはず。
+            })
+            .on('end', async () => {    //ストリームが終了したときに読み込むためのコード
+                //Math.floorで0~1のランダムの値を作り、取得した行数でかける。出た値をMath.floorによって小数点を切り捨てる。
+                const randomResult = results[Math.floor(Math.random() * results.length)];
 
-        const randomResult = results[Math.floor(Math.random() * results.length)];       //ランダムに結果を出す
-
-        let message = '';
-        switch (randomResult) {
-            case `大吉`:
-                message = `大吉だよ！！今なら人生なんでも上手くいくよ！！！！（多分）`
-                break;
-            case `中吉`:
-                message = `何かいいことが起きる予感。人生楽しもうぜ。`
-                break;
-            case `小吉`:
-                message = `君に小さな幸せが訪れますように。`
-                break;
-            case `吉`:
-                message = `まあ、悪くないね。普通の日常が幸せだよ。`
-                break;
-            case `末吉`:
-                message = `何か悪いことが起きるかも？警戒しておいて損はないね。`
-                break;
-            case `凶`:
-                message = `Badfeeling...`
-                break;
-            case `大凶`:
-                message = `何もかも上手くいかないかも。こういう日もあるって割り切ろうぜ。`
-                break;
-            default:
-                message = `人生を運で決めるのって良くないと思うんだよね`
-                break;
-        };
-
-        await interaction.reply(`おみくじの結果は**${randomResult}**です！\n${message}`);
+                //await interaction.replyでコマンドを送ってきたユーザに対してリプを送る。
+                await interaction.reply(`おみくじの結果は**${randomResult.result}**です！\n${randomResult.message}`);
+            });
     },
 };
