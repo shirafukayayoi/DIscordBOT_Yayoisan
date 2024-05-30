@@ -17,7 +17,7 @@ const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('
 for (const file of commandFiles) {      //各コマンドファイルを処理
 	const filePath = path.join(commandsPath, file);     //上で定義したcommandspathの後に、上で取得したファイル名を後づけする。
     console.log(filePath)      //読み込んだファイルの確認
-	const command = require(filePath);      //取得したファイルをrequiteによって読み込む。
+	const command = require(filePath);      //取得したファイルをr・equiteによって読み込む。
 	if ('data' in command && 'execute' in command) {    //左から読むとdataはcommandの中にあるか、executeはcommandの中にあるか。executeはコマンドを実行するために必要。
 		client.commands.set(command.data.name, command);    //読み込んだファイルの"name"を取得、commandの中身をコマンドを格納するCollectionに収納。
 	} else {

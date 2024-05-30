@@ -11,7 +11,7 @@ const fs = require('node:fs');  // ファイルを読み込むために必要な
 
 const commands = [];    //ここに変数をいれるための容器の作成
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));     //"commands"ファイルの中に.jsの拡張子のファイルを探すコード
-
+5
 for (const file of commandFiles) {      //.jsのファイルを順番に取り出す。
     const command = require(`./commands/${file}`);      //commandsの中にあるファイルの名前を{file}の中に入れて呼び出す。
     console.log(file)
