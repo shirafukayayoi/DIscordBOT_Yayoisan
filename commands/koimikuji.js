@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');      //Discordのスラ�
 const fs = require('fs');   //ファイル操作のために必要
 const csv = require('csv-parser');      //csvファイルを読み込むために必要
 
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('koimikuji')     //名前

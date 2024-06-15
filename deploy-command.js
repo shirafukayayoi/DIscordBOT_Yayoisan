@@ -6,8 +6,8 @@ console.log('TOKEN:', process.env.DISCORDBOTTOKEN);
 console.log('CLIENT_ID:', process.env.DISCORDBOTCLIENTID);
 console.log('GUILD_ID:', process.env.GUILD_ID);
 
-const { REST, Routes } = require('discord.js'); // discord.jsから
-const fs = require('node:fs');  // ファイルを読み込むために必要なコード
+const { REST, Routes } = require('discord.js'); // discord.jsから5
+const fs = require('node:fs');  // ファイルを読み込むために必要なコード5
 
 const commands = [];    //ここに変数をいれるための容器の作成
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));     //"commands"ファイルの中に.jsの拡張子のファイルを探すコード

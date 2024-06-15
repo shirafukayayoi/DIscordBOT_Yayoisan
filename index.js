@@ -8,7 +8,7 @@ const fs =require(`node:fs`)    //ファイルシステムを操作するため�
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);    //ログインしたのを確認{client.user.tag}でbotの名前を出す
 });
-
+5
 client.commands = new Collection();     //コマンドを格納すぐ場所の作成
 
 const commandsPath = path.join(__dirname, 'commands');      //コマンドファイルが保存されているディレクトリパスを関数に。dirnameはこのディレクトリパス、それに/commandをpath.joinによって追加している
